@@ -1,123 +1,500 @@
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  box-sizing: border-box;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
 }
 
 body {
-  background-color: hsl(0, 0%, 96%);
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(240, 3%, 12%);
 }
 
-header {
-  background: hsl(0, 0%, 20%);
-  color: white;
-  padding: 1rem 2rem;
+/* Navbar */
+.global-nav {
+  background: white;
+  height: 48px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.nav-content {
+  max-width: 1000px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
+  padding: 0 20px;
 }
 
-header .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: hsl(190, 100%, 50%);
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
 }
-
-nav a {
-  color: white;
+.nav-links a,
+.nav-actions a,
+.logo {
+  color: black;
   text-decoration: none;
-  margin: 0 15px;
+  font-size: 12px;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+.nav-links a:hover,
+.nav-actions a:hover {
+  opacity: 1;
 }
 
-.auth-buttons .btn {
-  text-decoration: none;
-  padding: 8px 15px;
-  border-radius: 4px;
+/* Dropdown Container */
+.dropdown-menu {
+    position: absolute;
+    top: 48px; /* Chiều cao header */
+    left: 0;
+    width: 100%;
+    background-color: white; /* Nền trắng cho dropdown */
+    padding: 40px 0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+/* Hover Effect */
+.nav-item:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    gap: 80px;
+    padding: 0 20px;
+}
+
+.dropdown-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Canh trái nội dung */
+}
+
+.column-header {
+    font-size: 12px;
+    color: hsl(240, 2%, 54%);
+    margin-bottom: 15px;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+.column-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.column-links li {
+    margin-bottom: 8px;
+}
+
+.column-links a {
+    text-decoration: none;
+    display: block;
+    transition: color 0.2s;
+}
+
+.column-links a:hover {
+    color: hsl(210, 100%, 45%);
+    text-decoration: underline;
+}
+
+/* Link Styles */
+.big-links a {
+    font-size: 24px;
+    font-weight: 600;
+    color: hsl(240, 3%, 12%);
+    line-height: 1.4;
+}
+
+.small-links a {
+    font-size: 12px;
+    font-weight: 600;
+    color: hsl(240, 3%, 12%);
+}
+
+.mt-small {
+    margin-top: 25px;
+}
+
+/* Hero Sections (Các phần full màn hình ở trên) */
+.hero-section {
+  height: 580px; /* Chiều cao cố định cho banner lớn */
+  width: 100%;
+  background-size: cover;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Đẩy nội dung lên trên */
+  align-items: center;
+  padding-top: 50px; /* Khoảng cách từ trên xuống chữ */
+  margin-bottom: 12px;
+}
+
+/* Typography cho Hero */
+.headline {
   color: white;
-  margin-left: 10px;
-  background: hsl(0, 0%, 33%);
+  font-size: 56px;
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 
-.auth-buttons .btn-primary {
-  background: hsl(211, 100%, 50%);
-}
-
-.hero {
-  background: linear-gradient(to right, hsl(210, 29%, 24%), hsl(188, 39%, 49%));
+.subhead {
   color: white;
-  text-align: center;
-  padding: 100px 20px;
+  font-size: 26px;
+  font-weight: 400;
+  margin-bottom: 15px;
 }
 
-.hero h1 {
-  margin-bottom: 20px;
-  font-size: 2.5rem;
+/* Buttons Style Apple */
+.cta-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+  position: relative;
+  z-index: 10;
 }
-.hero button {
-  padding: 10px 25px;
-  font-size: 1.1rem;
+
+.btn {
+  padding: 8px 18px;
+  border-radius: 980px; /* Bo tròn kiểu viên thuốc */
+  font-size: 14px;
   cursor: pointer;
-  background: hsl(190, 100%, 50%);
-  border: none;
-  border-radius: 5px;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+  text-decoration: none;
+  font-weight: 400;
 }
 
-.products {
-  padding: 40px 2rem;
+.btn-blue {
+  background-color: hsl(210, 100%, 45%);
+  color: white;
 }
-.products h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: hsl(0, 0%, 20%);
+.btn-blue:hover {
+  background-color: hsl(210, 100%, 46%);
 }
 
+.btn-outline {
+  background-color: transparent;
+  color: hsl(210, 100%, 45%);
+  border-color: hsl(210, 100%, 45%);
+}
+.btn-outline:hover {
+  background-color: hsl(210, 100%, 45%);
+  color: white;
+}
+
+/* Hero iPhone (Custom style) */
+.hero-iphone {
+  background-color: white; /* Nền trắng */
+  height: auto;
+  min-height: 580px;
+  justify-content: flex-start;
+  padding-bottom: 0;
+  text-align: center; /* Đảm bảo căn giữa */
+}
+
+.hero-iphone .headline {
+  color: black;
+  font-size: 80px; /* Tăng kích thước chữ tiêu đề */
+  font-weight: 600;
+  margin-bottom: 15px; /* Tăng khoảng cách dưới tiêu đề */
+  letter-spacing: -0.02em; /* Giảm khoảng cách chữ cho giống Apple */
+}
+
+.hero-iphone .subhead {
+  color: hsl(240, 3%, 12%); /* Màu xám đậm */
+  font-size: 28px; /* Tăng kích thước subhead */
+  font-weight: 400;
+  margin-bottom: 25px; /* Tăng khoảng cách dưới subhead */
+}
+
+.hero-iphone .cta-links {
+    justify-content: center; /* Căn giữa các nút */
+    gap: 20px; /* Tăng khoảng cách giữa các nút */
+}
+
+.hero-image {
+  height: auto;
+  margin-top: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Grid Layout (Phần danh sách sản phẩm bên dưới) */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: 1fr 1fr; /* Chia đôi màn hình */
+  gap: 12px;
+  padding: 0 12px 12px 12px;
 }
 
-.product-card {
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.grid-item {
+  height: 580px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  background-color: hsl(240, 33%, 99%); /* Màu nền mặc định */
+}
+
+/* Text trong Grid nhỏ hơn Hero một chút */
+.headline-small {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.subhead-small {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+/* Dark Mode Item (Cho MacBook Pro, Watch Ultra) */
+.item-dark {
+  color: white; /* Chữ trắng */
+}
+
+.item-dark .subhead-small {
+  color: hsl(240, 3%, 64%);
+} /* Màu chữ phụ xám nhạt */
+.item-dark .btn-outline.white-border {
+  color: hsl(209, 100%, 58%);
+  border-color: hsl(209, 100%, 58%);
+}
+.item-dark .btn-outline.white-border:hover {
+  background-color: hsl(209, 100%, 58%);
+  color: white;
+}
+
+/* Hero Watch (Custom style) */
+.hero-watch {
+  background-color: white;
+  height: auto;
+  min-height: 580px;
+  justify-content: flex-start;
+  padding-bottom: 0;
   text-align: center;
 }
 
-.product-card img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 5px;
+.hero-watch .headline {
+  color: black;
+  font-size: 56px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  letter-spacing: -0.005em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
-.product-card h3 {
-  margin: 15px 0 10px;
-  font-size: 1.1rem;
+
+.hero-watch .headline i {
+    font-size: 0.8em;
 }
-.product-card .price {
-  color: hsl(353, 98%, 41%);
-  font-weight: bold;
-  margin-bottom: 15px;
+
+.hero-watch .series-text {
+  font-weight: 300;
+}
+
+.hero-watch .subhead {
+  color: black;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.hero-watch .cta-links {
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px; /* Space before image */
+}
+
+.hero-product-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: auto; /* Push to bottom if flex container has height */
   display: block;
 }
-.product-card button {
-  background: hsl(134, 61%, 41%);
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-.product-card button:hover {
-  background: hsl(133, 61%, 33%);
+
+/* iPad Air and MacBook Air Grid Items */
+.item-ipad-air {
+  background-color: #f2f9ff; /* Light blue tint */
+  justify-content: space-between; /* Space out content and image */
+  padding-bottom: 0;
 }
 
-footer {
-  background: hsl(0, 0%, 20%);
-  color: hsl(0, 0%, 67%);
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
+.item-macbook-air {
+  background-color: #fbfbfd; /* Very light gray/blue tint */
+  justify-content: space-between;
+  padding-bottom: 0;
 }
+
+/* Ensure images in grid sit at the bottom */
+.grid-product-image {
+  max-width: 80%; /* Adjust as needed */
+  height: auto;
+  margin-top: 20px;
+  display: block;
+}
+
+/* Script font for iPad "air" */
+.script-text {
+  font-family: "Brush Script MT", cursive;
+  font-weight: 400;
+  color: #0090ff; /* Blue color for "air" */
+}
+
+/* Watch Ultra 3 and iPad Base Grid Items */
+.item-watch-ultra {
+  background-color: black;
+  justify-content: space-between;
+  padding-bottom: 0;
+}
+
+.item-ipad-base {
+  background-color: #fbfbfd; /* Very light gray/white */
+  justify-content: space-between;
+  padding-bottom: 0;
+}
+
+/* Footer */
+footer {
+    background-color: #f5f5f7;
+    font-size: 12px;
+    padding: 40px 0;
+    color: #848486;
+    margin-top: 12px;
+}
+
+.footer-content {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-between; /* Spread columns */
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 20px;
+}
+
+.footer-column {
+    flex: 1; /* Allow columns to grow */
+    min-width: 150px;
+}
+
+.footer-heading {
+    color: #1d1d1f;
+    font-weight: 600;
+    margin-bottom: 0.8em;
+    cursor: default;
+}
+
+.mt-footer {
+    margin-top: 24px;
+}
+
+.footer-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.8em;
+}
+
+.footer-links a {
+    color: hsl(240, 2%, 26%);
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.footer-links a:hover,
+.footer-note a:hover,
+.footer-legal a:hover {
+    text-decoration: underline;
+    color: hsl(240, 3%, 12%);
+}
+
+.footer-bottom {
+    margin-top: 34px;
+    border-top: 1px solid hsl(240, 6%, 83%);
+    padding-top: 20px;
+    font-size: 12px;
+}
+
+.footer-note {
+    margin-bottom: 10px;
+    color: hsl(240, 2%, 44%);
+}
+
+.footer-note a {
+    color: hsl(210, 100%, 40%);
+    text-decoration: none;
+}
+
+.footer-legal {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    color: hsl(240, 2%, 44%);
+    gap: 15px;
+    align-items: center; /* Vertical center alignment */
+}
+
+.legal-links {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.legal-links li {
+    padding-right: 15px;
+    border-right: 1px solid hsl(240, 6%, 83%);
+    line-height: 1;
+}
+
+.legal-links li:last-child {
+    border-right: none;
+}
+
+.legal-links a {
+    color: hsl(240, 2%, 44%);
+    text-decoration: none;
+}
+
+.locale {
+    color: hsl(240, 2%, 44%);
+    margin-left: auto; /* Push to right */
+    white-space: nowrap;
+} 
